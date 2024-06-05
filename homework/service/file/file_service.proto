@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package file;
+
+option go_package = "./;file";
+
+service FileStream {
+    rpc SendFileName(FileName) returns (stream FileByte);
+    rpc ListFiles(Empty) returns (FileList);
+    rpc GetFileInfo(FileName) returns (FileInfo);
+    rpc UploadFile (stream UploadFileRequest) returns (UploadFileResponse);
+}
+
+message FileName {
+    string name = 1;
+}
+
+message FileByte {
+    bytes data = 1;
+}
+
+message FileList {
+    repeated string names = 1;
+}
+
+message FileInfo {
+    string name = 1;
+    int64 size = 2;
+    string type = 3;
+}
+
+message Empty {
+}
+
+message UploadFileRequest {
+    string filename = 1;
+    bytes content = 2;
+}
+
+message UploadFileResponse {
+    string filename = 1;
+    string message = 2;
+}

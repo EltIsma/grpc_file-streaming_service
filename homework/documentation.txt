@@ -1,0 +1,20 @@
+Пример конфига:
+'''
+network: "tcp"
+address: "50051"
+'''
+
+запуск сервера:
+go run server/main.go
+
+запуск клиента:
+go build
+   - ./client list
+   - ./client info file.txt
+   - ./client download file.txt
+   - ./client upload test.txt
+или 
+  -go run client/main.go list
+  -go run client/main.go info file.txt
+  -go run client/main.go download file.txt
+  -go run client/main.go upload test.txt
